@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drawing a star</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      canvas {
+        background-color:black;
+        margin: 3px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="items/star.js"></script>
+    <script>
+      const cellsize = 200;
+
+      const drawItemFunctions = [];
+      drawItemFunctions[1] = drawStar;
+
+      for (let day = 1; day <= 24; day++) {
+        const canvas = document.createElement("canvas");
+        canvas.width = cellsize;
+        canvas.height = cellsize;
+        document.body.appendChild(canvas);
+
+        fillcell(day, canvas);
+      }
+
+      function fillcell(index, canvas) {
+        const ctx = canvas.getContext("2d");
+        const x = canvas.width / 2;
+        const y = canvas.height / 2;
+
+        const itemSize = canvas.width * 0.6;
+const drawItem = drawItemFunctions[index];
+
+const hue = Math.random() * 360
+        if (drawItem) {
+          drawItem(ctx,  x, y, itemSize, hue);
+        } else {
+          drawNumber(ctx, index, x, y, itemSize);
+        }
+      }
+
+      function drawNumber(ctx, value, x, y, size) {
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.font = size + "px consolas";
+        ctx.fillText(value, x, y);
+      }
+    </script>
+  </body>
+</html>
