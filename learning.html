@@ -1,0 +1,34 @@
+<canvas id="mycanvas" width="500px" height="500px" style="background-color: red;">
+
+</canvas>
+
+<style>
+    body{
+        margin: 0;
+        box-sizing: border-box;
+    }
+</style>
+
+<script>
+    const ctx = mycanvas.getContext("2d")
+    const point = {x:500/2,y:120}
+
+drawPoint(point)
+
+
+function drawPoint(loc, size = 10, color = "white"){
+ctx.beginPath()
+ctx.fillStyle = color
+ctx.arc(loc.x, loc.y, size/2,0, Math.PI*2)
+ctx.fill
+}
+
+
+
+
+
+    ctx.beginPath()
+ctx.fillStyle ="pink"
+    ctx.arc(point.x,point.y, 50,0,Math.PI*2)
+    ctx.fill()
+</script>
